@@ -1,7 +1,7 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
-function FlowerIcon({ size = 16 }) {
+function FlowerIcon({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 16 16" fill="none">
       <path d="M8 1C8 1,10.5 4.5,8 8C5.5 4.5 8 1 8 1Z" fill="#c9956c" opacity="0.85" />
@@ -25,7 +25,16 @@ const BG_FLOWERS = [
   { x: "85%", y: "50%", r: 28, opacity: 0.06, dur: 15 },
 ];
 
-function BgFlower({ x, y, r, opacity, dur, delay }) {
+type BgFlowerProps = {
+  x: string | number;
+  y: string | number;
+  r: number;
+  opacity: number;
+  dur: number;
+  delay: number;
+};
+
+function BgFlower({ x, y, r, opacity, dur, delay }: BgFlowerProps) {
   const cx = r * 1.1, cy = r * 1.1;
   return (
     <div className="absolute pointer-events-none"
@@ -61,8 +70,23 @@ export default function ThiepMoi() {
   const [triBOpen, setTriBOpen] = useState(false);
   const [cardRisen, setCardRisen] = useState(false);
   const [btnVisible, setBtnVisible] = useState(false);
-  const [petals, setPetals] = useState([]);
-  const [sparkles, setSparkles] = useState([]);
+  const [petals, setPetals] = useState<any[]>([]);
+  const [sparkles, setSparkles] = useState<any[]>([]);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const w = window.innerWidth;
+      if (w < 480) {
+        setScale(w / 480);
+      } else {
+        setScale(1);
+      }
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const spawnPetals = useCallback(() => {
     const cols = ["#f4c0d0", "#e8b4cc", "#d8c4e8", "#fbe0d0", "#e8d0c0", "#f0d0e0", "#fce8d8", "#dcc8e8"];
@@ -195,6 +219,11 @@ export default function ThiepMoi() {
           opacity:1;
           pointer-events:auto;
         }
+        @media (max-width: 480px) {
+          .card-slot.risen{
+            transform:translateX(-50%) translateY(-50%) scale(1.18);
+          }
+        }
         .card-float{ animation:cardFloat 4s ease-in-out infinite; animation-delay:1.5s; }
 
         .ribbon-shimmer{background:linear-gradient(90deg,#e8a0c0,#c9956c,#fff8f0,#e0b0d0,#c9956c,#e8a0c0);background-size:200% auto;animation:ribbonShimmer 3s linear infinite}
@@ -205,7 +234,7 @@ export default function ThiepMoi() {
 
       {/* Stage */}
       <div className="relative w-full flex flex-col items-center justify-center overflow-hidden"
-        style={{ minHeight: "860px", background: "#fdf0f5", padding: "50px 20px 40px" }}>
+        style={{ minHeight: "100dvh", background: "#fdf0f5", padding: "50px 20px 40px" }}>
 
         {/* Background flowers */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -243,7 +272,7 @@ export default function ThiepMoi() {
         </div>
 
         {/* ── Main scene ── */}
-        <div className="relative flex flex-col items-center" style={{ width: ENV_W }}>
+        <div className="relative flex flex-col items-center transition-transform duration-300" style={{ width: ENV_W, transform: `scale(${scale})`, transformOrigin: "center center" }}>
 
           {/* Envelope — the single positioned container; card is absolute inside it */}
           <div className="relative" style={{ width: ENV_W, height: ENV_H }}>
