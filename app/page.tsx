@@ -151,7 +151,10 @@ export default function ThiepMoi() {
     setTimeout(() => { setFlapOpen(false); setSealGone(false); setAnimating(false); }, 700);
   }, [animating]);
 
-  const handleToggle = () => isOpen ? doClose() : doOpen();
+  const handleToggle = (e?: React.MouseEvent) => {
+    if (e?.stopPropagation) e.stopPropagation();
+    isOpen ? doClose() : doOpen();
+  };
 
   return (
     <>
@@ -272,13 +275,15 @@ export default function ThiepMoi() {
         </div>
 
         {/* ── Main scene ── */}
-        <div className="relative flex flex-col items-center transition-transform duration-300" style={{ width: ENV_W, transform: `scale(${scale})`, transformOrigin: "center center" }}>
+        <div className="relative flex flex-col items-center transition-transform duration-300 cursor-pointer" 
+          style={{ width: ENV_W, transform: `scale(${scale})`, transformOrigin: "center center", WebkitTapHighlightColor: "transparent" }}
+          onClick={handleToggle} role="button" tabIndex={0}>
 
           {/* Envelope — the single positioned container; card is absolute inside it */}
           <div className="relative" style={{ width: ENV_W, height: ENV_H }}>
 
             {/* ── Card slot: absolute, rises UP out of envelope ── */}
-            <div className={`card-slot ${cardRisen ? "risen" : ""}`} onClick={handleToggle}>
+            <div className={`card-slot ${cardRisen ? "risen" : ""}`} onClick={handleToggle} role="button" tabIndex={0}>
               <div className={`bg-[#fffcf8] rounded-[3px] relative overflow-hidden cursor-pointer ${cardRisen ? "card-float" : ""}`}
                 style={{ width: CARD_W, boxShadow: "0 24px 80px rgba(180,100,140,0.22),0 4px 16px rgba(180,100,140,0.12),0 0 0 1px rgba(200,150,170,0.3)" }}>
                 <div className="h-[5px] w-full ribbon-shimmer" />
@@ -363,7 +368,7 @@ export default function ThiepMoi() {
             </div>
 
             {/* ── Envelope body (renders ON TOP of card bottom via z-index) ── */}
-            <div className="absolute inset-0 cursor-pointer" onClick={handleToggle}
+            <div className="absolute inset-0 cursor-pointer" onClick={handleToggle} role="button" tabIndex={0}
               style={{
                 background: "#fff8fb", borderRadius: "4px 4px 18px 18px",
                 border: "1px solid #e8c0d0", overflow: "hidden", zIndex: 25,
@@ -394,12 +399,14 @@ export default function ThiepMoi() {
 
               {/* Seal */}
               <div className="absolute cursor-pointer transition-all duration-[400ms]"
+                onClick={handleToggle} role="button" tabIndex={0}
                 style={{
                   top: "50%", left: "50%", zIndex: 30,
                   transform: sealGone ? "translate(-50%,-50%) scale(0)" : "translate(-50%,-50%)",
-                  opacity: sealGone ? 0 : 1, pointerEvents: sealGone ? "none" : "auto"
+                  opacity: sealGone ? 0 : 1, pointerEvents: sealGone ? "none" : "auto",
+                  WebkitTapHighlightColor: "transparent"
                 }}>
-                <svg width="62" height="62" viewBox="0 0 62 62" className="seal-anim">
+                <svg width="62" height="62" viewBox="0 0 62 62" className="seal-anim pointer-events-none">
                   <circle cx="31" cy="31" r="29" fill="#fff0f6" stroke="#d4a0bc" strokeWidth="1" />
                   <circle cx="31" cy="31" r="24" fill="none" stroke="#e8c0d4" strokeWidth="0.5" />
                   <path d="M31 12C31 12,34 18,31 24C28 18 31 12 31 12Z" fill="#e8a0c0" />
