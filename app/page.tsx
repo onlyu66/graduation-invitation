@@ -300,11 +300,11 @@ export default function ThiepMoi() {
                     <div className="flex-1 h-[0.6px]" style={{ background: "linear-gradient(90deg,#d4a0bc,transparent)" }} />
                   </div>
                   <p className="font-cormorant italic text-[15.5px] text-[#8a6070] text-center leading-[1.6] mb-[14px]">
-                    Gia đình trân trọng kính mời quý vị<br />đến chung vui cùng
+                    Con trân trọng kính mời gia đình mình<br />đến tham dự cùng
                   </p>
                   <div className="text-center mb-[18px]">
-                    <span className="font-greatvibes text-[58px] text-[#b06080] leading-[1.1] block"
-                      style={{ textShadow: "0 1px 0 rgba(255,255,255,0.9)" }}>Phan Ngọc Mai</span>
+                    <span className="font-greatvibes text-[40px] text-[#b06080] leading-[1.1] block"
+                      style={{ textShadow: "0 1px 0 rgba(255,255,255,0.9)" }}>Ngọc Mai</span>
                     <div className="flex items-center justify-center gap-[10px] mt-[6px]">
                       <div className="flex-1 max-w-[60px] h-[0.5px]" style={{ background: "rgba(200,140,170,0.5)" }} />
                       <FlowerIcon />
@@ -324,7 +324,7 @@ export default function ThiepMoi() {
                     <div className="flex-1 h-[0.5px]" style={{ background: "linear-gradient(90deg,transparent,rgba(200,150,170,0.5),transparent)" }} />
                   </div>
                   <div className="font-playfair text-[20px] text-[#5a2840] text-center tracking-[0.4px] mb-1">Lễ Tốt Nghiệp Đại Học</div>
-                  <div className="font-cormorant italic text-[13.5px] text-[#9a7080] text-center mb-4">Trường Đại học Kinh tế Quốc dân, Hà Nội</div>
+                  <div className="font-cormorant italic text-[13.5px] text-[#9a7080] text-center mb-4">Học viện Báo chí và Tuyên truyền, Hà Nội</div>
                   <div className="flex flex-col gap-[10px] my-[10px]">
                     <div className="flex items-start gap-[12px]">
                       <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-[2px]"
@@ -336,7 +336,7 @@ export default function ThiepMoi() {
                       </div>
                       <div>
                         <span className="font-cormorant block text-[10px] tracking-[2.5px] uppercase text-[#c090a8]">Thời gian</span>
-                        <span className="font-cormorant block text-[15.5px] text-[#4a2030] font-semibold leading-[1.3]">8:00 sáng — Thứ Bảy, 12 tháng 7 năm 2025</span>
+                        <span className="font-cormorant block text-[15.5px] text-[#4a2030] font-semibold leading-[1.3]">Chủ Nhật, 28 tháng 06 năm 2026</span>
                       </div>
                     </div>
                     <div className="flex items-start gap-[12px]">
@@ -349,17 +349,14 @@ export default function ThiepMoi() {
                       </div>
                       <div>
                         <span className="font-cormorant block text-[10px] tracking-[2.5px] uppercase text-[#c090a8]">Địa điểm</span>
-                        <span className="font-cormorant block text-[15.5px] text-[#4a2030] font-semibold leading-[1.3]">Hội trường Nguyễn Văn Bình</span>
-                        <span className="font-cormorant italic text-[13px] text-[#9a7080] block">207 Giải Phóng, Hai Bà Trưng, Hà Nội</span>
+                        <span className="font-cormorant block text-[15.5px] text-[#4a2030] font-semibold leading-[1.3]">Học viện Báo chí và Tuyên truyền</span>
+                        <span className="font-cormorant italic text-[13px] text-[#9a7080] block">36 Xuân Thuỷ, Cầu Giấy, Hà Nội</span>
                       </div>
                     </div>
                   </div>
                   <div className="h-[0.5px] my-[14px]" style={{ background: "linear-gradient(90deg,transparent,rgba(200,140,170,0.4),transparent)" }} />
                   <p className="font-cormorant italic text-[15px] text-[#7a5060] text-center leading-[1.7] mb-[10px]">
-                    Sự hiện diện của quý vị<br />là món quà quý giá nhất trong ngày trọng đại này 🌸
-                  </p>
-                  <p className="font-cormorant text-[11px] tracking-[2.5px] text-[#c090a8] uppercase text-center">
-                    Xác nhận tham dự · <strong className="text-[#b06080] font-semibold">0912 345 678</strong>
+                    Sự hiện diện của gia đình<br />là món quà quý giá nhất của con trong ngày đặc biệt này 🌸
                   </p>
                 </div>
               </div>
